@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category 	  Upment
+ * @package 	  Upment_Bannerslider
+ * @copyright 	Copyright (c) 2019 Upment (https://www.upment.com/)
+ */
+-->
+<layout version="0.1.0">
+  <bannerslider_adminhtml_bannerslider_index>
+  	<reference name="content">
+      <block type="bannerslider/adminhtml_bannerslider" name="bannerslider" />
+  	</reference>
+  </bannerslider_adminhtml_bannerslider_index>
+</layout>

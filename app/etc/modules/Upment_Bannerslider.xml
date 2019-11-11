@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category 	  Upment
+ * @package 	  Upment_Bannerslider
+ * @copyright 	Copyright (c) 2019 Upment (https://www.upment.com/)
+ */
+-->
+<config>
+    <modules>
+        <Upment_Bannerslider>
+            <active>true</active>
+            <codePool>local</codePool>
+            <version>0.1.0</version>
+        </Upment_Bannerslider>
+    </modules>
+</config>

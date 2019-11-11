@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Upment Bannerslider
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2019 Upment (https://upment.com)
+ */
+
+-->
+<layout version="0.1.0">
+  <default>
+    <reference name="head">
+      <action method="addCss">
+          <stylesheet>css/upment/bannerslider/bannerslide.css</stylesheet>
+      </action>
+
+    </reference>
+  </default>
+
+  <cms_index_index>
+        <reference name="content">
+            <block type="bannerslider/bannerslider" name="bannerslider" template="bannerslider/bannerslider.phtml" before="content"/>
+        </reference>
+  </cms_index_index>
+</layout>

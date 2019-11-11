@@ -1,0 +1,96 @@
+
+
+  <br>
+  <?php
+  /**
+   * @author    Upment
+   * @package   Upment_Bannerslider
+   * @copyright Copyright (c) 2019 Upment (https://upment.com)
+   */
+   $currentStoreId = Mage::app()->getStore()->getId();
+
+   $collection = Mage::getModel('bannerslider/banner')->getCollection()
+   ->addFieldToFilter(
+    array('visible_in', 'visible_in'),
+    array(
+        array(['finset'=>'0']),
+        array(['finset'=>$currentStoreId])
+    )
+    )
+    ->addFieldToFilter('active',
+    array('eq'=>'0')
+    );
+
+
+   $delays = array();
+   $image_id = 1;
+   foreach($collection as $data)
+  {
+    $desktop_image = $data->getData('desktop_image');
+    $mobile_image = $data->getData('mobile_image');
+    $desktop_image = Mage::helper('bannerslider')->getImages($desktop_image);
+    $mobile_image = Mage::helper('bannerslider')->getImages($mobile_image);
+    $link = $data->getData('link');
+    $animation = $data->getData('animation');
+    $animationType = Mage::helper('bannerslider')->getAnimationType($animation);
+
+    $delays[] = $data->getData('delay');
+    ?>
+    <div class="mySlides <?php echo $animationType ?>">
+     <?php if ($link != '') {?>
+        <a href="<?php echo $link; ?>">
+    <?php }
+
+    $srcset_desktop = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+    $srcset_mobile = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+    if ($image_id == 1){
+      $srcset_desktop = $desktop_image;
+      $srcset_mobile = $mobile_image;
+    }
+
+     ?>
+
+    <picture>
+      <source class="lazyslider" media="(min-width: 992px)" srcset="<?php echo $srcset_desktop; ?>" data-src="<?php echo $desktop_image; ?>" alt="Banner Image"/>
+      <source class="lazyslider" media="(max-width: 991px)" srcset="<?php echo $srcset_mobile; ?>" data-src="<?php echo $mobile_image; ?>" alt="Banner Image Mobile"/>
+      <img src="<?php echo $desktop_image; ?>" width=100% alt="Banner Image"/>
+    </picture>
+
+    <?php if ($link != '') {?>
+    </a>
+    <?php } ?>
+    </div>
+  <?php
+  $image_id++;
+  } ?>
+
+
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var delays = <?php echo json_encode($delays) ?>;
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, delays[slideIndex-1] * 1000);
+}
+</script>
+
+<script>
+window.addEventListener('load', function(){
+    var allimages= document.getElementsByClassName('lazyslider');
+    for (var i=0; i<allimages.length; i++) {
+        if (allimages[i].getAttribute('data-src')) {
+            allimages[i].setAttribute('srcset', allimages[i].getAttribute('data-src'));
+        }
+    }
+}, false)
+</script>
