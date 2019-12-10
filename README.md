@@ -3,6 +3,14 @@ Magento Banner Slider module
 Magento 1.9 module that creates banner for homepage.
 It lets you customize your homepage banner fast and easy.
 
+Features:
+- Support for multistore
+- Option for different mobile and desktop images
+- Images are lazy loaded so it is speed optimized
+- Different animation types
+- Optional links for each images
+- Delay options for each image.
+
 ## Installation
 
 1. Download or clone this repo and copy the app and skin folders to your Magento installation.
