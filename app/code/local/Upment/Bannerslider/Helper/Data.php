@@ -66,7 +66,7 @@ class Upment_Bannerslider_Helper_Data extends Mage_Core_Helper_Abstract
         try {
             unlink($banner_image_path);
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+            return $exc->getTraceAsString();
         }
   }
 
@@ -88,13 +88,13 @@ class Upment_Bannerslider_Helper_Data extends Mage_Core_Helper_Abstract
    */
   public function getAnimationType($animationIndex){
       if ($animationIndex == '0'){
-          $animation = 'fade';
+          $animation = 'fade-banner';
         }
       elseif ($animationIndex == '1') {
-          $animation = 'leftslide';
+          $animation = 'leftslide-banner';
         }
       elseif ($animationIndex == '2') {
-          $animation = 'rightslide';
+          $animation = 'rightslide-banner';
         }
       return $animation;
   }

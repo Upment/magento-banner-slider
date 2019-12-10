@@ -1,7 +1,7 @@
 
 .mySlides {display: none;}
 /* Fading animation */
-.fade {
+.fade-banner {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
@@ -18,7 +18,7 @@
   to {opacity: 1}
 }
 
-.leftslide {
+.leftslide-banner {
     position: relative;
     left: -100%;
     -webkit-animation: slide 1.5s forwards;
@@ -35,7 +35,7 @@
     100% { left: 0; }
 }
 
-.rightslide {
+.rightslide-banner {
     position: relative;
     left: +100%;
     -webkit-animation: slide 1.5s forwards;
